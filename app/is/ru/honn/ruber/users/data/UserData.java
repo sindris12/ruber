@@ -1,6 +1,5 @@
 package is.ru.honn.ruber.users.data;
 
-import is.ru.honn.ruber.domain.Trip;
 import is.ru.honn.ruber.domain.User;
 import is.ru.honn.ruber.users.service.UserNotFoundException;
 import is.ru.honn.ruber.users.service.UsernameExistsException;
@@ -10,7 +9,10 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class UserData extends RuData implements UserDataGateway
 {
@@ -62,23 +64,4 @@ public class UserData extends RuData implements UserDataGateway
     return user;
   }
 
-    @Override
-    public ArrayList<Trip> getAllTripsByUserID(int userID) {
-        JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
-        ArrayList<Trip> trips = new ArrayList<>();
-
-        try
-        {
-            trips.add((Trip)jdbcTemplate.queryForObject(
-                    "select * from ru_trips where uuid = '" + userID + "'", new TripRowMapper()));
-        }
-        catch (EmptyResultDataAccessException erdaex)
-        {
-            throw new UserNotFoundException("No user found with username: " + userID);
-        }
-
-
-
-        return trips;
-    }
 }

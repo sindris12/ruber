@@ -1,18 +1,19 @@
 package controllers;
 
 
+import is.ru.honn.ruber.domain.Trip;
 import is.ru.honn.ruber.domain.User;
+import is.ru.honn.ruber.trips.service.TripService;
 import is.ru.honn.ruber.users.service.UserNotFoundException;
 import is.ru.honn.ruber.users.service.UserService;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
-import play.data.*;
-import play.mvc.*;
-
-import static play.data.Form.form;
-
+import play.data.Form;
+import play.mvc.Result;
 import views.html.index;
 import views.html.login;
+
+import java.util.ArrayList;
+
+import static play.data.Form.form;
 
 public class LoginController extends UserController
 {
@@ -28,9 +29,11 @@ public class LoginController extends UserController
     Form<User> filledForm = loginForm.bindFromRequest();
 
     UserService service = (UserService) ctx.getBean("userService");
+    TripService tripService = (TripService) ctx.getBean("tripService");
 
     try
     {
+
       User user = service.getUser(filledForm.field("username").value());
       if (!user.getPassword().equals(filledForm.field("password").value()))
       {
@@ -39,6 +42,8 @@ public class LoginController extends UserController
         // password.
         throw new UserNotFoundException();
       }
+
+      ArrayList<Trip> trips = tripService.getTrips(user.getId());
 
       session("username", user.getUsername());
       session("displayName", user.getFirstName() + " " + user.getLastName());

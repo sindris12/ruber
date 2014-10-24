@@ -1,4 +1,4 @@
-package is.ru.honn.ruber.users.data;
+package is.ru.honn.ruber.trips.data;
 
 import is.ru.honn.ruber.domain.Trip;
 import is.ru.honn.ruber.domain.TripStatus;
@@ -17,7 +17,7 @@ public class TripRowMapper implements RowMapper<Trip> {
         return  new Trip(rs.getInt(1),      // id
                 rs.getLong(2),   // request time
                 rs.getInt(3),   // product id
-                TripStatus.values()[rs.getInt(4)],   // status
+                TripStatus.COMPLETED,   // status
                 rs.getDouble(5),   // distance
                 rs.getLong(6),   // start time
                 rs.getLong(7)      // end time

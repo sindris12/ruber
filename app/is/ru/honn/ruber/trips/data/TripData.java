@@ -2,10 +2,14 @@ package is.ru.honn.ruber.trips.data;
 
 import is.ru.honn.ruber.domain.Trip;
 import is.ru.honn.ruber.trips.service.TripExistsException;
+import is.ru.honn.ruber.trips.service.TripNotFoundException;
 import is.ruframework.data.RuData;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,5 +48,23 @@ public class TripData extends RuData implements TripDataGateway {
         }
 
         return returnKey;
+    }
+
+    @Override
+     public ArrayList<Trip> getTripsByUserID(int userID) {
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
+
+        try
+        {
+            ArrayList<Trip> t = jdbcTemplate.query(
+                    "select * from ru_trips where productID = '" + userID + "'", new TripRowMapper());
+            return t;
+        }
+        catch (EmptyResultDataAccessException erdaex)
+        {
+            throw new TripNotFoundException("No trip found for user with userid: " + userID);
+        }
+
+        return null;
     }
 }
