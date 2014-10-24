@@ -56,9 +56,9 @@ public class TripData extends RuData implements TripDataGateway {
 
         try
         {
-            ArrayList<Trip> t = jdbcTemplate.query(
+           /* ArrayList<Trip> t = jdbcTemplate.query(
                     "select * from ru_trips where productID = '" + userID + "'", new TripRowMapper());
-            return t;
+            return t; */
         }
         catch (EmptyResultDataAccessException erdaex)
         {
