@@ -1,7 +1,6 @@
 @(signupForm: Form[is.ru.honn.ruber.domain.User])
 
-@import helper._
-@import twitterBootstrap._
+@import views.html.helper._
 
 @main(title = "Login", nav = "login") {
     @helper.form(action = routes.LoginController.login) {
@@ -20,7 +19,7 @@
 
         <div class="actions">
             <input type="submit" class="btn primary" value="Login">
-            <a href="@routes.Application.index" class="btn">Cancel</a>
+            <a href="@routes.Application.index" class="btn btn-danger">Cancel</a>
         </div>
     }
 }

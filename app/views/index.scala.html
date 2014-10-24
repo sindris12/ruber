@@ -1,7 +1,5 @@
 @(title: String = "Welcome!")
 
-@import play.api.Play.current
-
 @main(title) {
 
     <h2>Welcome to Ruber</h2>
@@ -14,8 +12,8 @@
 
         <h3>Looks like you're new here!</h3>
         <p>
-            <a class="btn" href="@routes.SignupController.blank()">Sign up</a>
-            <a class="btn" href="@routes.LoginController.blank()">Login</a>
+            <a class="btn btn-primary" href="@routes.SignupController.blank()">Sign up</a>
+            <a class="btn btn-success" href="@routes.LoginController.blank()">Login</a>
         </p>
     }
 }
