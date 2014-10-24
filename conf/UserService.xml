@@ -28,5 +28,13 @@
         <constructor-arg index="0" ref="userDataGateway"/>
     </bean>
 
+    <bean id="tripDataGateway" class="is.ru.honn.ruber.trips.data.TripData">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="tripService" class="is.ru.honn.ruber.trips.service.TripServiceData" >
+        <constructor-arg index="0" ref="tripDataGateway"/>
+    </bean>
+
 
 </beans>

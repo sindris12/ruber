@@ -1,9 +1,11 @@
 package is.ru.honn.ruber.users.service;
 
 
-import is.ru.honn.ruber.users.data.UserDataGateway;
+import is.ru.honn.ruber.domain.Trip;
 import is.ru.honn.ruber.domain.User;
+import is.ru.honn.ruber.users.data.UserDataGateway;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Logger;
 
@@ -38,5 +40,10 @@ public class UserServiceData implements UserService
     }
     return user;
   }
+
+    @Override
+    public ArrayList<Trip> getTrips(int uuid) {
+        return null;
+    }
 
 }
