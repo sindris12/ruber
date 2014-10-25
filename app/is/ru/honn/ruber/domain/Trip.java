@@ -106,6 +106,8 @@ public class Trip
     this.endTime = endTime;
   }
 
+  public long getTime() { return this.endTime - this.startTime; }
+
   @Override
   public String toString()
   {

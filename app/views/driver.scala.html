@@ -1,0 +1,30 @@
+@(driver : is.ru.honn.ruber.domain.Driver)
+
+@main(title = "Driver", nav = "driver") {
+    <div class="container">
+        <div class="well">
+            <div class="media">
+                <a class="pull-left" href="#">
+                    <img class="media-object" src=@driver.getImage>
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading">@driver.getFirstName  @driver.getLastName</h4>
+                    <p class="text-left">@driver.getDisplayName</p>
+                    <p>@driver.getDescription</p>
+                    <ul class="list-inline list-unstyled">
+                        <span><i class="glyphicon glyphicon-comment"></i> 2 comments</span>
+                        <li>|</li>
+                        <li>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star-empty"></span>
+                        </li>
+                        <li>|</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+}

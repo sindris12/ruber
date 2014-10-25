@@ -1,5 +1,6 @@
 package is.ru.honn.ruber.trips.service;
 
+import is.ru.honn.ruber.domain.Driver;
 import is.ru.honn.ruber.domain.Trip;
 import is.ru.honn.ruber.domain.TripStatus;
 import is.ru.honn.ruber.trips.data.TripDataGateway;
@@ -35,5 +36,16 @@ public class TripServiceData implements TripService {
             throw new TripNotFoundException("Trips not found for user: " + uuid);
         }
         return trips;
+    }
+
+    @Override
+    public Driver getDriverForProduct(int productID) {
+        Driver driverOfProduct = tripDataGateway.getDriverOfProduct(productID);
+
+        if (driverOfProduct == null) {
+            throw new TripNotFoundException("No driver found for product " + productID);
+        }
+
+        return driverOfProduct;
     }
 }

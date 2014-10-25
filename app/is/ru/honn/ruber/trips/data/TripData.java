@@ -1,5 +1,6 @@
 package is.ru.honn.ruber.trips.data;
 
+import is.ru.honn.ruber.domain.Driver;
 import is.ru.honn.ruber.domain.Trip;
 import is.ru.honn.ruber.trips.service.TripExistsException;
 import is.ru.honn.ruber.trips.service.TripNotFoundException;
@@ -25,7 +26,6 @@ public class TripData extends RuData implements TripDataGateway {
                 new SimpleJdbcInsert(getDataSource())
                         .withTableName("ru_trips")
                         .usingGeneratedKeyColumns("id");
-
 
         Map<String, Object> parameters = new HashMap<String, Object>(6);
         parameters.put("uuid", trip.getId());
@@ -65,5 +65,27 @@ public class TripData extends RuData implements TripDataGateway {
             throw new TripNotFoundException("No trip found for user with userid: " + userID);
         }
 
+    }
+
+    @Override
+    public Driver getDriverOfProduct(int productID) {
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
+        String queryString = "SELECT u.username, u.firstname, u.lastname, p.description, p.displayName, p.capacity, p.image\n" +
+                "FROM ru_users u\n" +
+                "  JOIN ru_drivers d\n" +
+                "    ON d.uuid = u.id\n" +
+                "  JOIN ru_products p\n" +
+                "    ON " + productID +" = p.id\n" +
+                "  WHERE d.productID = " + productID +";\n";
+
+        try
+        {
+            Driver d = (Driver)jdbcTemplate.queryForObject(queryString, new DriverRowMapper());
+            return d;
+        }
+        catch (EmptyResultDataAccessException erdaex)
+        {
+            throw new TripNotFoundException("No product found with productid: " + productID);
+        }
     }
 }

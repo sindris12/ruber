@@ -1,5 +1,6 @@
 package is.ru.honn.ruber.trips.service;
 
+import is.ru.honn.ruber.domain.Driver;
 import is.ru.honn.ruber.domain.Trip;
 import is.ru.honn.ruber.domain.TripStatus;
 
@@ -15,4 +16,5 @@ public interface TripService {
             throws TripExistsException;
 
     public List<Trip> getTrips(int uuid);
+    public Driver getDriverForProduct(int productID);
 }

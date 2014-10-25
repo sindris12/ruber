@@ -11,3 +11,6 @@ INSERT INTO ru_drivers(uuid, productID, priceID) VALUES (2, 1, 1)
 INSERT INTO ru_ratings(uuid, driverID, rating, comment) VALUES (1, 1, 4, 'Very nice driver')
 INSERT INTO ru_ratings(uuid, driverID, rating, comment) VALUES (3, 1, 2, 'Talks too much!')
 INSERT INTO ru_ratings(uuid, driverID, rating, comment) VALUES (4, 1, 5, 'Excellent driver!')
+
+
+UPDATE ru_products SET image='http://www.automobilesreview.com/img/hummer-h3-sensation/thumbs/hummer-h3-sensation-01.jpg' WHERE id=1;

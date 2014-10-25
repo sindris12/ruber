@@ -1,0 +1,35 @@
+@(driverListFromMyController : List[is.ru.honn.ruber.domain.Driver])
+
+
+@main(title = "Drivers", nav = "drivers") {
+    <div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+                <th class="hidden-xs">Car</th>
+                <th class="hidden-xs">Capacity</th>
+            </tr>
+        </thead>
+        <tbody data-link="row" class="rowlink">
+    @for(driver <- driverListFromMyController) {
+
+
+                <tr>
+                    <td><a href="@routes.DriverController.getDriver(driver.getUserName)">@driver.getFirstName</a></td>
+                    <td>@driver.getLastName</td>
+                    <td>@driver.getUserName</td>
+                    <td class="hidden-xs">@driver.getDisplayName</td>
+                    <td class="hidden-xs">@driver.getCapacity</td>
+                </tr>
+
+
+
+    }
+
+        </tbody>
+    </table>
+    </div>
+}

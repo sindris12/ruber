@@ -1,0 +1,13 @@
+@(historyListFromMyController : List[is.ru.honn.ruber.domain.Trip])
+
+
+@main(title = "History", nav = "history") {
+    <ul class="list-group">
+    @for(trip <- historyListFromMyController) {
+
+        <li class="list-group-item">Request Time : @controllers.HistoryController.getTimeFromUnix(trip.getRequestTime), Length : @trip.getDistance() KM, Time : @controllers.HistoryController.getTime(trip.getTime), Driver : @controllers.HistoryController.getDriver(trip.getProductId)</li>
+
+    }
+
+    </ul>
+}
