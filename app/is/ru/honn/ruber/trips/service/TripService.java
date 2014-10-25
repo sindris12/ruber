@@ -1,10 +1,9 @@
 package is.ru.honn.ruber.trips.service;
 
-
 import is.ru.honn.ruber.domain.Trip;
 import is.ru.honn.ruber.domain.TripStatus;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by arnif on 10/24/14.
@@ -15,5 +14,5 @@ public interface TripService {
                            long endTime, TripStatus status)
             throws TripExistsException;
 
-    public ArrayList<Trip> getTrips(int uuid);
+    public List<Trip> getTrips(int uuid);
 }

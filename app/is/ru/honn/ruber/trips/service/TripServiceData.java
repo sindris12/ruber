@@ -4,7 +4,8 @@ import is.ru.honn.ruber.domain.Trip;
 import is.ru.honn.ruber.domain.TripStatus;
 import is.ru.honn.ruber.trips.data.TripDataGateway;
 
-import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * Created by arnif on 10/24/14.
@@ -27,8 +28,8 @@ public class TripServiceData implements TripService {
     }
 
     @Override
-    public ArrayList<Trip> getTrips(int uuid) {
-        ArrayList<Trip> trips = tripDataGateway.getTripsByUserID(uuid);
+    public List<Trip> getTrips(int uuid) {
+        List<Trip> trips = tripDataGateway.getTripsByUserID(uuid);
         if (trips == null)
         {
             throw new TripNotFoundException("Trips not found for user: " + uuid);

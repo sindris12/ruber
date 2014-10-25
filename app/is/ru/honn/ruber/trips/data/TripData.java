@@ -9,8 +9,8 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -51,20 +51,19 @@ public class TripData extends RuData implements TripDataGateway {
     }
 
     @Override
-     public ArrayList<Trip> getTripsByUserID(int userID) {
+     public List<Trip> getTripsByUserID(int userID) {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
 
         try
         {
-           /* ArrayList<Trip> t = jdbcTemplate.query(
-                    "select * from ru_trips where productID = '" + userID + "'", new TripRowMapper());
-            return t; */
+            List<Trip> t = jdbcTemplate.query("select * from ru_trips where uuid =?", new TripRowMapper(), userID);
+            return t;
+
         }
         catch (EmptyResultDataAccessException erdaex)
         {
             throw new TripNotFoundException("No trip found for user with userid: " + userID);
         }
 
-        return null;
     }
 }

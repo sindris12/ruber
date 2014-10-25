@@ -1,6 +1,5 @@
 package controllers;
 
-
 import is.ru.honn.ruber.domain.Trip;
 import is.ru.honn.ruber.domain.User;
 import is.ru.honn.ruber.trips.service.TripService;
@@ -11,7 +10,7 @@ import play.mvc.Result;
 import views.html.index;
 import views.html.login;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import static play.data.Form.form;
 
@@ -43,7 +42,7 @@ public class LoginController extends UserController
         throw new UserNotFoundException();
       }
 
-      ArrayList<Trip> trips = tripService.getTrips(user.getId());
+      List<Trip> trips = tripService.getTrips(user.getId());
 
       session("username", user.getUsername());
       session("displayName", user.getFirstName() + " " + user.getLastName());
