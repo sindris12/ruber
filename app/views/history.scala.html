@@ -16,14 +16,16 @@
     @for(trip <- historyListFromMyController) {
 
 
+            <tr>
+                <td><a href="@routes.HistoryController.getTripDetails(trip.getId)">@controllers.HistoryController.getTimeFromUnix(trip.getRequestTime)</a></td>
+                <td>@trip.getDistance() KM</td>
+                <td>@controllers.HistoryController.getTime(trip.getTime)</td>
+                <td class="hidden-xs">@controllers.HistoryController.getDriver(trip.getProductId)</td>
+            </tr>
 
 
-        <tr>
-            <td><a href="@routes.HistoryController.getTripDetails(trip.getId)">@controllers.HistoryController.getTimeFromUnix(trip.getRequestTime)</a></td>
-            <td>@trip.getDistance() KM</td>
-            <td>@controllers.HistoryController.getTime(trip.getTime)</td>
-            <td class="hidden-xs">@controllers.HistoryController.getDriver(trip.getProductId)</td>
-        </tr>
+
+
 
     }
 

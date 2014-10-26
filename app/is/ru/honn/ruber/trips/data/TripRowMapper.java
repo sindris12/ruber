@@ -22,7 +22,9 @@ public class TripRowMapper implements RowMapper<Trip> {
                 rs.getLong(6),   // start time
                 rs.getLong(7),      // end time
                 rs.getString(10),
-                rs.getString(9)
+                rs.getString(9),
+                rs.getString(12),
+                rs.getString(11)
         );
     }
 }

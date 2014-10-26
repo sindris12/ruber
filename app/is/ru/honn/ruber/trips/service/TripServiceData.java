@@ -21,9 +21,9 @@ public class TripServiceData implements TripService {
     }
 
     @Override
-    public Trip tripSignup(int uuid, long requestTime, int productID, double distance, long startTime, long endTime, TripStatus status, String latitude, String longitude) throws TripExistsException {
+    public Trip tripSignup(int uuid, long requestTime, int productID, double distance, long startTime, long endTime, TripStatus status, String latitude, String longitude, String endLatitude, String endLongitude) throws TripExistsException {
 
-        Trip trip = new Trip(uuid, requestTime, productID, status, distance, startTime, endTime, latitude, longitude);
+        Trip trip = new Trip(uuid, requestTime, productID, status, distance, startTime, endTime, latitude, longitude, endLatitude, endLongitude);
         int id = tripDataGateway.addTrip(trip);
         return trip;
     }

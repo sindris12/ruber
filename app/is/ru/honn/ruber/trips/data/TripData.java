@@ -37,6 +37,8 @@ public class TripData extends RuData implements TripDataGateway {
         parameters.put("status", trip.getStatus().toString());
         parameters.put("longitude", trip.getLongitude());
         parameters.put("latitude", trip.getLatitude());
+        parameters.put("endLongitude", trip.getEndLongitude());
+        parameters.put("endLatitude", trip.getEndLatitude());
 
         int returnKey;
 

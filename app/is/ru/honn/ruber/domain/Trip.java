@@ -11,13 +11,15 @@ public class Trip
   protected long endTime;
   protected String longitude;
   protected String latitude;
+  protected String endLongitude;
+  protected String endLatitude;
 
   public Trip()
   {
 
   }
 
-  public Trip(int id, long requestTime, int productId, TripStatus status, double distance, long startTime, long endTime, String latitude, String longitude)
+  public Trip(int id, long requestTime, int productId, TripStatus status, double distance, long startTime, long endTime, String latitude, String longitude, String endLatitude, String endLongitude)
   {
     this.id = id;
     this.requestTime = requestTime;
@@ -28,6 +30,8 @@ public class Trip
     this.endTime = endTime;
     this.longitude = longitude;
     this.latitude = latitude;
+    this.endLatitude = endLatitude;
+    this.endLongitude = endLongitude;
   }
 
   public Trip(long requestTime, int productId, TripStatus status, double distance, long startTime, long endTime)
@@ -126,6 +130,22 @@ public class Trip
 
     public void setLatitude(String latitude) {
         this.latitude = latitude;
+    }
+
+    public String getEndLongitude() {
+        return endLongitude;
+    }
+
+    public void setEndLongitude(String endLongitude) {
+        this.endLongitude = endLongitude;
+    }
+
+    public String getEndLatitude() {
+        return endLatitude;
+    }
+
+    public void setEndLatitude(String endLatitude) {
+        this.endLatitude = endLatitude;
     }
 
     @Override
