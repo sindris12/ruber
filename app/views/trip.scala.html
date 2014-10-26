@@ -1,0 +1,45 @@
+@(trip : is.ru.honn.ruber.domain.Trip)
+
+@main(title = "Trip", nav = "history") {
+
+    <div class="container">
+        <div class="well">
+            <div class="media">
+                <a class="pull-left" href="#">
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading">Driver : @controllers.HistoryController.getDriver(trip.getProductId)</h4>
+                    <p class="text-left">Distance : @trip.getDistance KM</p>
+                    <p class="text-left">Request Time : @controllers.HistoryController.getTimeFromUnix(trip.getRequestTime)</p>
+                    <p class="text-left">Total time : @controllers.HistoryController.getTime(trip.getTime)</p>
+                    <p class="text-left">Starting Location: </p>
+                    @if(trip.getLatitude == null) {
+                        <div class="alert alert-warning" role="alert">Data not available</div>
+                    } else {
+
+                        <p>
+
+                            <iframe
+                            width="600"
+                            height="450"
+                            frameborder="0" style="border:0"
+                            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCkhPBs5lGRE_V9FrLAfMkuwhfTrGtEu5A
+    &q=@trip.getLatitude,@trip.getLongitude">
+                            </iframe>
+
+                        </p>
+                    }
+
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+
+}

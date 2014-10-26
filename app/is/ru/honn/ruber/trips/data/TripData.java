@@ -35,6 +35,8 @@ public class TripData extends RuData implements TripDataGateway {
         parameters.put("startTime", trip.getStartTime());
         parameters.put("endTime", trip.getEndTime());
         parameters.put("status", trip.getStatus().toString());
+        parameters.put("longitude", trip.getLongitude());
+        parameters.put("latitude", trip.getLatitude());
 
         int returnKey;
 
@@ -63,6 +65,22 @@ public class TripData extends RuData implements TripDataGateway {
         catch (EmptyResultDataAccessException erdaex)
         {
             throw new TripNotFoundException("No trip found for user with userid: " + userID);
+        }
+
+    }
+
+    @Override
+    public Trip getTripByID(int tripID) {
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
+        String queryString = "SELECT * FROM ru_trips t WHERE t.id =" + tripID;
+
+        try {
+            Trip t = (Trip)jdbcTemplate.queryForObject(queryString, new TripRowMapper());
+            return t;
+        }
+        catch (EmptyResultDataAccessException erdaex)
+        {
+            throw new TripNotFoundException("No trip found with id: " + tripID);
         }
 
     }

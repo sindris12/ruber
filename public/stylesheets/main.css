@@ -1,0 +1,13 @@
+.all-comments {
+    margin-top: 25px;
+}
+
+.add-comment-form, .error-message-group {
+    display:none;
+}
+
+.ruber-background {
+    background-image: url('../images/bak.jpg');
+    height:180px;
+    background-position-y: 395px;
+}

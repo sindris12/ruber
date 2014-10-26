@@ -21,9 +21,9 @@ public class TripServiceData implements TripService {
     }
 
     @Override
-    public Trip tripSignup(int uuid, long requestTime, int productID, double distance, long startTime, long endTime, TripStatus status) throws TripExistsException {
+    public Trip tripSignup(int uuid, long requestTime, int productID, double distance, long startTime, long endTime, TripStatus status, String latitude, String longitude) throws TripExistsException {
 
-        Trip trip = new Trip(uuid, requestTime, productID, status, distance, startTime, endTime);
+        Trip trip = new Trip(uuid, requestTime, productID, status, distance, startTime, endTime, latitude, longitude);
         int id = tripDataGateway.addTrip(trip);
         return trip;
     }
@@ -36,6 +36,16 @@ public class TripServiceData implements TripService {
             throw new TripNotFoundException("Trips not found for user: " + uuid);
         }
         return trips;
+    }
+
+    @Override
+    public Trip getTripByID(int tripID) {
+        Trip trip = tripDataGateway.getTripByID(tripID);
+
+        if (trip == null) {
+            throw new TripNotFoundException("Trip not found with id " + tripID);
+        }
+        return trip;
     }
 
     @Override

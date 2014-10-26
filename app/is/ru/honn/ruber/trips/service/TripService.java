@@ -12,9 +12,10 @@ import java.util.List;
 public interface TripService {
 
     public Trip tripSignup(int uuid, long requestTime, int productID, double distance, long startTime,
-                           long endTime, TripStatus status)
+                           long endTime, TripStatus status, String latitude, String longitude)
             throws TripExistsException;
 
     public List<Trip> getTrips(int uuid);
+    public Trip getTripByID(int tripID);
     public Driver getDriverForProduct(int productID);
 }

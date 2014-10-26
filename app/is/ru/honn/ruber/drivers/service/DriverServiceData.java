@@ -39,6 +39,18 @@ public class DriverServiceData implements DriverService {
 
     @Override
     public List<Rating> getRatingForDriver(String drivername) {
-        return null;
+        List<Rating> ratings = driverDataGateway.getRatingForDriver(drivername);
+
+        if (ratings == null) {
+            throw new DriverNotFoundException("No ratings found for driver " + drivername);
+        }
+        return ratings;
+    }
+
+    @Override
+    public Rating addComment(int userId, int driverID, int rating, String comment) {
+        Rating r = new Rating(userId, driverID, rating, comment);
+        driverDataGateway.addRating(r);
+        return r;
     }
 }

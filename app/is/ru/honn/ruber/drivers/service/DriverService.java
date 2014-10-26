@@ -13,4 +13,5 @@ public interface DriverService {
     public List<Driver> getDrivers();
     public Driver getDriver(String username);
     public List<Rating> getRatingForDriver(String drivername);
+    public Rating addComment(int userId, int driverID, int rating, String comment);
 }

@@ -7,6 +7,7 @@ import is.ru.honn.ruber.trips.service.TripService;
 import is.ru.honn.ruber.users.service.UserService;
 import play.mvc.Result;
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -28,6 +29,13 @@ public class HistoryController extends UserController {
         //return ok(Json.toJson(trips));
 
         return ok(views.html.history.render(trips));
+    }
+
+    public static Result getTripDetails(long tripID) {
+        TripService tripService = (TripService) ctx.getBean("tripService");
+
+        Trip t = tripService.getTripByID(new BigDecimal(tripID).intValueExact());
+        return ok(views.html.trip.render(t));
     }
 
     public static String getDriver(int productID) {

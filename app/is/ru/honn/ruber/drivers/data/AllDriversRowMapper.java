@@ -17,7 +17,8 @@ public class AllDriversRowMapper implements RowMapper<Driver> {
 
         //String currencyCode, String displayName, int lowEstimate, int highEstimate, double surgeMultiplier)
 
-        return new Driver(rs.getString(2),
+        return new Driver(rs.getInt(14),
+                rs.getString(2),
                 rs.getString(3),
                 rs.getString(4),
                 rs.getString(5),

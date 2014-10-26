@@ -13,4 +13,5 @@ public interface DriverDataGateway {
     public List<Driver> getDrivers();
     public Driver getDriver(String username);
     public List<Rating> getRatingForDriver(String drivername);
+    public int addRating(Rating rating);
 }

@@ -15,7 +15,8 @@ public class Driver {
     private String image;
     private Price price;
 
-    public Driver(String userName, String firstName, String lastName, String description, String displayName, int capacity, String image, Price price) {
+    public Driver(int id, String userName, String firstName, String lastName, String description, String displayName, int capacity, String image, Price price) {
+        this.id = id;
         this.userName = userName;
         this.firstName = firstName;
         this.lastName = lastName;

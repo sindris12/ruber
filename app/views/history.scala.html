@@ -2,12 +2,32 @@
 
 
 @main(title = "History", nav = "history") {
-    <ul class="list-group">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Request Time</th>
+                    <th>Length</th>
+                    <th>Time</th>
+                    <th class="hidden-xs">Driver</th>
+                </tr>
+            </thead>
+            <tbody data-link="row" class="rowlink">
     @for(trip <- historyListFromMyController) {
 
-        <li class="list-group-item">Request Time : @controllers.HistoryController.getTimeFromUnix(trip.getRequestTime), Length : @trip.getDistance() KM, Time : @controllers.HistoryController.getTime(trip.getTime), Driver : @controllers.HistoryController.getDriver(trip.getProductId)</li>
+
+
+
+        <tr>
+            <td><a href="@routes.HistoryController.getTripDetails(trip.getId)">@controllers.HistoryController.getTimeFromUnix(trip.getRequestTime)</a></td>
+            <td>@trip.getDistance() KM</td>
+            <td>@controllers.HistoryController.getTime(trip.getTime)</td>
+            <td class="hidden-xs">@controllers.HistoryController.getDriver(trip.getProductId)</td>
+        </tr>
 
     }
 
-    </ul>
+            </tbody>
+        </table>
+    </div>
 }

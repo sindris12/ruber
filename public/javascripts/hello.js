@@ -1,5 +1,5 @@
 $("document").ready(function() {
-    console.log("hello");
+    console.log("hello 2");
 
     var username = $(".user-name").html();
 

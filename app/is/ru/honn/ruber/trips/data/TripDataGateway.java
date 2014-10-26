@@ -11,5 +11,6 @@ public interface TripDataGateway extends RuDataAccess {
 
     public int addTrip(Trip trip);
     public java.util.List<Trip> getTripsByUserID(int userID);
+    public Trip getTripByID(int tripID);
     public Driver getDriverOfProduct(int productID);
 }
