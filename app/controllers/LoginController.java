@@ -23,6 +23,10 @@ public class LoginController extends UserController
     return ok(login.render(loginForm));
   }
 
+    /**
+     * function to login the user
+     * @return the correct page for the user
+     */
   public static Result login()
   {
     Form<User> filledForm = loginForm.bindFromRequest();
@@ -62,6 +66,10 @@ public class LoginController extends UserController
       return redirect("/");
   }
 
+    /**
+     * logout the user
+     * @return redirect to index
+     */
   public static Result logout()
   {
     session().clear();

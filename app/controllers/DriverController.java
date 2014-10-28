@@ -17,6 +17,10 @@ import java.util.List;
  */
 public class DriverController extends UserController {
 
+    /**
+     * get all drivers
+     * @return all drivers
+     */
     public static Result getAllDrivers() {
         DriverService driverService = (DriverService) ctx.getBean("driverService");
 
@@ -24,6 +28,11 @@ public class DriverController extends UserController {
         return ok(views.html.drivers.render(drivers));
     }
 
+    /**
+     * get a driver
+     * @param username drivers username
+     * @return one driver
+     */
     public static Result getDriver(String username) {
         DriverService driverService = (DriverService) ctx.getBean("driverService");
 
@@ -31,6 +40,11 @@ public class DriverController extends UserController {
         return ok(views.html.driver.render(d));
     }
 
+    /**
+     * get comments for a driver
+     * @param drivername drivers username
+     * @return json with all the drivers rating
+     */
     public static Result getComments(String drivername) {
         DriverService driverService = (DriverService) ctx.getBean("driverService");
 
@@ -38,6 +52,11 @@ public class DriverController extends UserController {
         return ok(Json.toJson(ratingForDriver));
     }
 
+    /**
+     * Send in a comment, json object is posted should include
+     * driverusername, comment and rating.
+     * @return status
+     */
     @BodyParser.Of(BodyParser.Json.class)
     public static Result submitComment() {
         JsonNode json = request().body().asJson();
